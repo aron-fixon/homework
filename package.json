@@ -1,0 +1,35 @@
+{
+  "name": "trabajo-en-clase",
+  "version": "1.0.0",
+  "description": "repo-para-las-clases",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aron8112/trabajo-en-clase.git"
+  },
+  "keywords": [
+    "prueba-y-error"
+  ],
+  "author": "aron",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aron8112/trabajo-en-clase/issues"
+  },
+  "homepage": "https://github.com/aron8112/trabajo-en-clase#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.21.4"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19"
+  }
+}
