@@ -6,7 +6,7 @@ class CryptPassword {
     let salt = bcrypt.genSalt(saltRounds);
     let hashPassw = bcrypt.hash(unhashedPassw, salt);
 
-    return hashPassw;
+    return hashPassw
   }
 
   static decrypt(userId, hashedPassw) {}
