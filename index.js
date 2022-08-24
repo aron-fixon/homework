@@ -4,6 +4,8 @@ const app = express();
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const cors = require("cors");
+const { db_connection } = require("./src/models/db");
 const indexRouter = require("./src/routes/index");
 require("dotenv").config;
 
@@ -13,6 +15,22 @@ app.use(cookieParser());
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
+app.use((req, res, next) => {
+  // Dominio que tengan acceso (ej. 'http://example.com')
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
+  // Metodos de solicitud que deseas permitir
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PATCH, PUT, DELETE"
+  );
+
+  // Encabezados que permites (ej. 'X-Requested-With,content-type')
+  res.setHeader("Access-Control-Allow-Headers", "*");
+
+  next();
+});
 
 //ROUTES
 app.get("/", (req, res) => {
@@ -21,8 +39,9 @@ app.get("/", (req, res) => {
 app.use("/homework", indexRouter);
 
 //SERVER
-const port = 3000;
-/*process.env.PORT*/ app.set(3000);
+db_connection();
+const port = 3000; /*process.env.PORT*/
+app.set(3000);
 const server = http.createServer(app);
 server.listen(3000, () => {
   console.log(`Server running at http://localhost:${port}`);
